@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <h3>Create your account</h3>
+    <!-- <h3>Create your account</h3>
     <form action="/register" method="post">
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
@@ -18,5 +18,26 @@
             <input class="form-control" name="confirmation" placeholder="Confirm password" type="password"/>
         </div>
         <button class="btn btn-primary" type="submit">Register</button>
-    </form>
+    </form> -->
+
+    <div class="wrapper">
+        <form class="login" action="/register" method="post">
+          <p class="title">Register your account</p>
+          <input type="text" placeholder="Username" autofocus name="username" autocomplete="off"/>
+          <i class="fa fa-user"></i>
+          <input type="password" placeholder="Password" name="password" />
+          <i class="fa fa-key"></i>
+          <input type="password" placeholder="Confirm Password" name="confirmation" />
+          <i class="fa fa-key"></i>
+          <a href="/login">Already have an account?</a>
+          <button type="submit">
+            <i class="spinner"></i>
+            <span class="state">Sign Up</span>
+          </button>
+        </form>
+        <footer></footer>
+    </div>
+
+
 {% endblock %}
+

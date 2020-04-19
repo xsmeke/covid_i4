@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <h3>Log in or <a href="/register">create an account</a></h3>
+    <!-- <h3>Log in or <a href="/register">create an account</a></h3>
     <form action="/login" method="post">
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
@@ -14,8 +14,27 @@
             <input class="form-control" name="password" placeholder="Password" type="password"/>
         </div>
         <button class="btn btn-primary" type="submit">Log In</button>
-    </form>
+    </form> -->
+
+    <div class="wrapper">
+        <form class="login" action="/login" method="post">
+          <p class="title">Log in</p>
+          <input type="text" placeholder="Username" autofocus name="username" autocomplete="off" />
+          <i class="fa fa-user"></i>
+          <input type="password" name="password" placeholder="Password" />
+          <i class="fa fa-key"></i>
+          <a href="/register">Create an account</a>
+          <button type="submit">
+            <i class="spinner"></i>
+            <span class="state">Log in</span>
+          </button>
+        </form>
+        <footer></footer>
+      </div>
 
 {% endblock %}
 
-<!--classes added hain already, for css bad me-->
+
+
+
+

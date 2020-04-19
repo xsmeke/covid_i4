@@ -13,7 +13,7 @@ import requests
 
 app = Flask(__name__)
 
-#HEROKU_URI FOR SETTING UP  postgres://exbggyfzvhnnoa:a641263e7716306e5115314f58bd70c7f4ad6790d405a550e762c2e4ed1f8eb9@ec2-34-197-212-240.compute-1.amazonaws.com:5432/dd974uhsrc5dfg
+#HEROKU_URL FOR SETTING UP  postgres://exbggyfzvhnnoa:a641263e7716306e5115314f58bd70c7f4ad6790d405a550e762c2e4ed1f8eb9@ec2-34-197-212-240.compute-1.amazonaws.com:5432/dd974uhsrc5dfg
 
 
 
@@ -34,7 +34,7 @@ db = scoped_session(sessionmaker(bind=engine))
 @app.route("/")
 @login_required
 def index():
-    return "COVID ideation challenge"
+    return render_template("uploads.html")
 
 
 # Route for handling the login page logic
@@ -142,8 +142,24 @@ def register():
     else:
         return render_template("register.html")
 
-
 #KAFI MACHAYA, 150 LINES
-        
 
+@app.route("/handleFileUpload", methods=['POST'])
+def handleFileUpload():
+    if 'agentsfile' in request.files:
+        agentsfile = request.files['agentsfile']
+        if agentsfile.filename != '':            
+            agentsfile.save(os.path.join('uploadsfolder/', agentsfile.filename))
+    if 'commodityfile' in request.files:
+        commodityfile = request.files['commodityfile']
+        if commodityfile.filename != '':            
+            commodityfile.save(os.path.join('uploadsfolder/', commodityfile.filename))
+    if 'consumersfile' in request.files:
+        consumersfile = request.files['consumersfile']
+        if consumersfile.filename != '':            
+            consumersfile.save(os.path.join('uploadsfolder/', consumersfile.filename))
+    return redirect(url_for('script'))
 
+@app.route("/script")
+def script():
+    return render_template("script.html")
